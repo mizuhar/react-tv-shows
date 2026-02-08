@@ -10,6 +10,8 @@ import Register from "./views/Register";
 import Catalog from "./views/Catalog";
 import Create from "./views/Create";
 import Details from "./views/Details";
+import Edit from "./views/Edit";
+import Search from "./views/Search";
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
         <Route path={"/register"} element={<Register />} />
         <Route path={"/catalog"} element={<Catalog/>}/>
         <Route path={"/create"} element={<Create/>}/>
+        <Route path={"/search"} element={<Search/>}/>
         <Route path={"/catalog/:showId"} element={<Details/>}/>
+        <Route path={"/catalog/:showId/edit"} element={<Edit/>}/>
       </Routes>
       <Footer/>
       </AuthProvider>

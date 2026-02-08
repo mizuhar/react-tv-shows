@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { getShow } from "../data/shows";
+import { getShow, removeShow } from "../data/shows";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
@@ -27,9 +27,13 @@ export default function Details() {
   }
 async function onDelete(){
 
-    console.log('Deleted!');
     
-    //const choice = confirm(`Are you sure want to remove ${show.title}?`)
+    const choice = confirm(`Are you sure want to remove ${show.title}?`)
+
+    if(choice){
+         await removeShow(showId)
+         navigate('/catalog')
+    }
 
 }
 
