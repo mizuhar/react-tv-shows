@@ -12,6 +12,8 @@ import Create from "./views/Create";
 import Details from "./views/Details";
 import Edit from "./views/Edit";
 import Search from "./views/Search";
+import AuthGuard from "./guards/AuthGuard";
+import GuestGuard from "./guards/GuestGuard";
 
 function App() {
   return (
@@ -20,13 +22,25 @@ function App() {
        <Header/>
       <Routes>
         <Route path={"/"} element={<Home />} />
+        <Route path={"/catalog"} element={<Catalog/>}/>
+
+        <Route element={<GuestGuard/>}>
+
         <Route path={"/login"} element={<Login />} />
         <Route path={"/register"} element={<Register />} />
-        <Route path={"/catalog"} element={<Catalog/>}/>
+
+        </Route>
+      
+
+        <Route element={<AuthGuard/>}>
+
         <Route path={"/create"} element={<Create/>}/>
         <Route path={"/search"} element={<Search/>}/>
         <Route path={"/catalog/:showId"} element={<Details/>}/>
         <Route path={"/catalog/:showId/edit"} element={<Edit/>}/>
+
+        </Route>
+        
       </Routes>
       <Footer/>
       </AuthProvider>
