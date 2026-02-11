@@ -5,7 +5,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./views/Home";
 import Footer from "./views/Footer";
 import Header from "./views/Header";
-import Login from "./views/login";
+import Login from "./views/Login";
 import Register from "./views/Register";
 import Catalog from "./views/Catalog";
 import Create from "./views/Create";
