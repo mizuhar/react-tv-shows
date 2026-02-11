@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Odibee+Sans&display=swap');
 
 
@@ -30,42 +36,44 @@ h3{
 .show {
   font-family: "Odibee Sans", sans-serif;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  width: 27vw;
-  height: 65vh;
-  padding-bottom: 1rem;
-  margin: 10px auto;
-  background-image: repeating-radial-gradient(   
-    circle closest-corner at 22% 100px,
-    rgba(20, 136, 230, 0.72),
-    rgb(20, 136, 230) 50px,
-    #9b9a9b 50px,
-    #7b787d 100px
-    );
-    border-radius: 15px;
 
+  width: 100%;
+  max-width: 380px;
+
+  min-height: 500px;
+
+  padding-bottom: 1rem;
+  margin: 10px;
+  border-radius: 15px;
 }
+
 
 .show img {
-border: 2px solid black;
-width: 23vw;
-height: 30vh;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 100%;
+  max-width: 320px;
+  height: 220px;
+  object-fit: cover;
+
+  border: 2px solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.show-info{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 22vw;
-  padding: 10px 19px;
-  height: 26vh;
-  margin-top: 20px;
+
+
+
+.show-info {
+  width: 100%;
+  max-width: 320px;
+
+  padding: 10px 15px;
+  margin-top: 15px;
+
   background-color: rgba(0, 0, 0, 0.622);
   border-radius: 15px;
 }
+
 
 .show .title {
   color: rgb(20, 136, 230);
@@ -91,39 +99,52 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 .show p {
- width: 25vw;
-  font-size: 18px;
-font-weight: 800;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 800;
   text-align: center;
-  color: rgb(255, 255, 255);
-  text-shadow: 2px 2px rgb(62, 62, 61);
-  margin: 0;
-  letter-spacing: 2px;
 }
 
-@media (max-width: 1000px) {
+
+@media (max-width: 768px) {
+
   h2 {
-    font-size: 25px; 
+    font-size: 28px;
   }
 
   .show {
-    width: 40%; 
-  }
-
-  .show-info {
-    width: 40%;
-  }
-
-  .details-btn {
-    font-size: 12px; 
-    width: 50px;
-  }
-
-  .show p {
-    font-size: 9px; 
+    max-width: 100%;
+    min-height: auto;
+    padding: 15px;
   }
 
   .show img {
-    height:25vh;
+    height: 200px;
   }
+
+  .show .title {
+    font-size: 22px;
+  }
+
+  .show p {
+    font-size: 14px;
+  }
+
+  .details-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+  }
+}
+@media (max-width: 1024px) {
+  .show {
+    max-width: 320px;
+  }
+}
+.show {
+  transition: transform 0.2s ease;
+}
+
+.show:hover {
+  transform: translateY(-5px);
 }

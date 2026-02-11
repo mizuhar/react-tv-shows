@@ -2,37 +2,37 @@
 
 
 .login-page {
-  width: 360px;
-  padding: 8% 0 0;
+  width: 100%;
+  max-width: 360px;
+  padding: 40px 15px 0;
   margin: auto;
 }
+
 .form {
-  background-image: repeating-radial-gradient(   
+  background-image: repeating-radial-gradient(
     circle closest-corner at 22% 100px,
     rgba(20, 136, 230, 0.72),
     rgb(20, 136, 230) 50px,
     #9b9a9b 50px,
     #7b787d 100px
-    );
-    border-radius: 15px;
+  );
+
+  width: 100%;
   max-width: 440px;
-  margin: auto;
-  margin-top: -110px;
-  padding: 45px;
-  text-align: center;
-  border-radius: 10px;
+
+  margin: 30px auto;
+  padding: 30px 20px;
+
+  border-radius: 15px;
   box-shadow: -2px 2px 21px 14px rgba(0,0,0,1);
 }
 
+
 .form h2 {
-  margin-top: 2px;
-  font-size: 50px;
-  letter-spacing: 5px;
-  font-weight: 900;
-  color: rgb(20, 136, 230);
-  background-color: rgba(0, 0, 0, 0.872);
-  border-radius: 10px;
+  font-size: 32px;
+  letter-spacing: 3px;
 }
+
 
 .form input{
   border-radius: 10px;
@@ -57,20 +57,10 @@
 
 }
 .form button {
-  text-transform: uppercase;
-  outline: 0;
-  background: rgb(20, 136, 230);
-  width: 100%;
-  border: 0;
-  padding: 5px;
-  color: #000000;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 5px;
-  border: 1px solid black;
-  font-weight: 600;
-  font-family: "Bungee", sans-serif;
+  padding: 10px;
+  font-size: 16px;
 }
+
 .form button:hover,
 .form button:active,
 .form button:focus {
@@ -108,13 +98,9 @@
   font-size: 30px;
 }
 
-#edit , #create, #login , #register {
-  scale: 0.72;
-}
 
-#edit ,#create {
-  margin-top: -130px;
-}
+
+
 
 .border{
   height: 100px;
@@ -130,15 +116,14 @@
   margin-bottom: 0px;
     font-size: 30px;
   }
-  .search-result > .show {
-    scale: 0.6;
-    margin-top: -80px;
-  }
+ .search-result .show {
+  width: 100%;
+  max-width: 360px;
+  margin: 15px auto;
+}
 
-  .search-result > .show > a{
-scale: 2;
-margin-top: 30px;
-  }
+
+  
 
   .search-result > .show > p {
     font-size: 33px;
@@ -164,3 +149,44 @@ border-radius: 10px;
     background-color: #000000;
     border-radius: 100%;
   }
+
+  @media (max-width: 768px) {
+
+  .form {
+    padding: 20px 15px;
+    margin: 20px 10px;
+  }
+
+  .form h2 {
+    font-size: 24px;
+  }
+
+  .form input {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .form textarea {
+    font-size: 14px;
+  }
+
+  .form button {
+    font-size: 15px;
+  }
+
+  .form .message {
+    font-size: 14px;
+  }
+
+  .form .message a {
+    font-size: 18px;
+  }
+}
+.form {
+  transition: transform 0.2s ease;
+}
+
+.form:hover {
+  transform: translateY(-3px);
+}
+
