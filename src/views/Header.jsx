@@ -19,7 +19,7 @@ const { isAuthenticated, logoutHandler, email } = useContext(AuthContext)
   <nav>
     <div>
       
-      <span style={{color:'black',fontSize:'33px'}}>
+      <span style={{color:'orange',fontSize:'33px'}}>
        {email}
       </span>
       
