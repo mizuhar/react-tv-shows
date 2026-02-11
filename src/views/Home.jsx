@@ -1,7 +1,16 @@
+import { useEffect } from "react";
+import { supabase } from "../data/supabaseClient";
+
+
+
+
 
 
 export default function Home(){
 
+useEffect(() => {
+  supabase.from("shows").select("*").then(console.log);
+}, []);
 
     return(
          

@@ -1,8 +1,11 @@
 import { useContext } from "react"
-import  AuthContext  from "../context/AuthContext"
+import  {AuthContext}  from "../context/AuthContext"
 
  
  export default function Header(){
+
+
+
 
 const { isAuthenticated, logoutHandler, email } = useContext(AuthContext)
 

@@ -8,3 +8,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </BrowserRouter>
 );
 
+//console.log(import.meta.env.VITE_SUPABASE_URL);

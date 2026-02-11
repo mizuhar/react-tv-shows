@@ -17,20 +17,27 @@ export default function Create() {
   const [error, setError] = useState(null);
 
   const submitHandler = async (values) => {
-    if (
-      Object.values(values).some(v => !v || String(v).trim() === "")
-    ) {
-      setError("All fields are required!");
-      return;
-    }
+  if (Object.values(values).some(v => !v || String(v).trim() === "")) {
+    setError("All fields are required!");
+    return;
+  }
 
-    try {
-      await createShow(values);
-      navigate("/catalog");
-    } catch (err) {
-      setError(err.message);
-    }
+  const showData = {
+    title: values.title,
+    image_url: values.imageUrl,     // 👈 rename
+    genre: values.genre,
+    country: values.country,
+    description: values.details     // 👈 rename
   };
+
+  try {
+    await createShow(showData);
+    navigate("/catalog");
+  } catch (err) {
+    setError(err.message);
+  }
+};
+
 
   const { values, setValues, onChange, onSubmit, onReset } = useForm(
     submitHandler,

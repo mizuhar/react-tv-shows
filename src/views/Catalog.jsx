@@ -29,7 +29,7 @@ export default function Catalog() {
 
         {shows.length > 0 ? (
           shows.map((show) => (
-            <div key={show._id} className="show">
+            <div key={show.id} className="show">
               <img src={show.imageUrl} alt="example1" />
               <div className="show-info">
                 <h3 className="title">{show.title}</h3>
@@ -40,7 +40,7 @@ export default function Catalog() {
 
                  <Link
                            className="details-btn"
-                           to={`/catalog/${show._id}`}
+                           to={`/catalog/${show.id}`}
                         >
                            Details
                         </Link>

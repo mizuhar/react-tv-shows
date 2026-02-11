@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 
 
-import Home from "./views/home";
+import Home from "./views/Home";
 import Footer from "./views/Footer";
 import Header from "./views/Header";
 import Login from "./views/login";
