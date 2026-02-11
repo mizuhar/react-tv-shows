@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Odibee+Sans&display=swap');
 body {
-  background-image: url(../images/bg.png);
+  background-image: url(/images/bg.png);
   background-size: 100vw;
   margin: auto;
   padding: 0;
@@ -35,7 +35,7 @@ nav a {
   font-weight: 800;
   height: 12vh;
   color: rgb(4, 4, 4);
-  background-image: url(../images/tv.png);
+  background-image: url(/images/tv.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
