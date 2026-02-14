@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getShows } from "../data/shows";
 
+import Spinner from "../components/Spinner";
+
+
 export default function Catalog() {
   const [shows, setShows] = useState([]);
   const[loading, setLoading] = useState(true)
@@ -16,14 +19,16 @@ export default function Catalog() {
       .finally(() => setLoading(false));
   }, []);
 
-  if(loading){
-    return <p style={{color:'wheat',fontSize:'70px',width:'100%'}}>Loading...</p>;
-  }
+ if (loading) {
+  return <Spinner />;
+}
+
 
   return (
     <>
       <h2>Users Recommendations</h2>
-        {error && <p style={{color:'red',fontSize: '33px'}}>{error}</p>}
+        {error && <p className="error">{error}</p>}
+
 
       <section id="shows">
 
