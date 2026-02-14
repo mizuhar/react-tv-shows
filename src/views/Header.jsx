@@ -10,9 +10,14 @@ export default function Header() {
       <Link id="logo" to="/">
         <img id="logo-img" src="/images/show_logo.png" alt="logo" />
       </Link>
+{email && (
+  <div className="welcome-bar">
+    <span>{email}</span>
+  </div>
+)}
 
       <nav>
-        {email && <span className="welcome">{email}</span>}
+        
 
         <Link to="/catalog" className="nav-link">TV Shows</Link>
         <Link to="/search">Search</Link>

@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Odibee+Sans&display=swap');
+
+/* -------------------- */
+/* BODY */
+/* -------------------- */
+
 body {
   background-image: url(/images/bg.png);
   background-size: cover;
   background-position: center;
-
   margin: 0;
   padding: 0;
-
   font-family: "Odibee Sans", sans-serif;
 }
 
+/* -------------------- */
+/* HEADER */
+/* -------------------- */
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-
   padding: 10px 20px;
   width: 100%;
 
@@ -29,53 +33,43 @@ header {
   -webkit-backdrop-filter: blur(8px);
 }
 
+#logo-img {
+  height: 90px;
+}
 
-
-
-
-
+/* -------------------- */
+/* NAVIGATION */
+/* -------------------- */
 
 nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
+/* Email / Welcome */
 
+.welcome-bar {
+  display: flex;
+  align-items: center;
+}
 
-
-
-
-
-
-
-.welcome {
+.welcome-bar span {
   color: orange;
   font-size: 22px;
-  margin-right: 10px;
+  white-space: nowrap;
 }
 
-
-
-
-
-
-
-
-#logo-img {
-  height: 90px;
-}
-
+/* Links */
 
 nav a {
+  min-width: 110px;
   height: 55px;
-  width: 100px;
-  font-size: 1.2rem;
+
+  font-size: 1.1rem;
   font-weight: 800;
- 
-  min-width: auto;
 
   background-image: url(/images/tv.png);
   background-position: center;
@@ -88,115 +82,142 @@ nav a {
 
   text-decoration: none;
   color: black;
+
+  transition: transform 0.2s ease;
 }
 
-
-
-
-
-
-
-
-header a {
-  padding: 0 10px;
-  text-decoration: none;
-  
-  
-}
 nav a:hover {
   transform: scale(1.08);
 }
 
+/* -------------------- */
+/* FOOTER */
+/* -------------------- */
 
 footer {
   background-color: #040404;
   color: rgb(20, 136, 230);
-  font-weight: bolder;
-  font-weight: 100;
   letter-spacing: 5px;
+
   position: fixed;
   bottom: 0;
   left: 0;
+
   width: 100%;
   height: 30px;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-
-#home h1 {
-  margin-top: 80px;
-  font-size: 36px;
-  width: 40vw;
-  display: inline;
-  text-align: center;
-  border-radius: 10px;
-  color: rgb(20, 136, 230);
-  text-shadow: 3px 3px black;
-  letter-spacing: 3px;
-}
+/* -------------------- */
+/* HOME */
+/* -------------------- */
 
 #home {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  /* margin-top: -40px; */
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.7) 50px,
-    rgba(169, 169, 169, 0.7) 50px,
-    rgba(169, 169, 169, 0.7) 100px
-  ),
-  repeating-linear-gradient(
-    45deg,
-    #00000099,
-    #000000 45px,
-    #d3d3d3 45px,
-    #d3d3d3 60px);
- padding: 0;
- height: 73vh;
- border-radius: 5px;
+
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7) 50px,
+      rgba(169, 169, 169, 0.7) 50px,
+      rgba(169, 169, 169, 0.7) 100px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      #00000099,
+      #000000 45px,
+      #d3d3d3 45px,
+      #d3d3d3 60px
+    );
+
+  height: 73vh;
+  border-radius: 5px;
+}
+
+#home h1 {
+  font-size: 36px;
+  width: 40vw;
+  text-align: center;
+
+  color: rgb(20, 136, 230);
+  text-shadow: 3px 3px black;
+  letter-spacing: 3px;
 }
 
 #home img {
   height: 430px;
-  margin-top: 70px;
   margin-right: 50px;
 }
+
+/* -------------------- */
+/* MOBILE */
+/* -------------------- */
+
 @media (max-width: 768px) {
 
   header {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 8px;
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  nav a {
-    min-width: 120px;
-    height: 45px;
-    font-size: 14px;
-    padding: 0 10px;
+    gap: 6px;
+    padding: 6px 10px;
   }
 
   #logo-img {
     height: 65px;
   }
 
-  .welcome {
+  nav {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  nav a {
+    min-width: 120px;
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .welcome-bar {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .welcome-bar span {
     font-size: 16px;
+    word-break: break-all;
+  }
+
+  #home {
+    flex-direction: column;
+    padding: 20px 10px;
+    height: auto;
+    text-align: center;
+  }
+
+  #home img {
+    height: 220px;
+    margin: 10px 0;
+  }
+
+  #home h1 {
+    width: 100%;
+    max-width: 320px;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+
+    margin: 0 auto;
+    padding: 12px;
+
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 12px;
   }
 }
-
-
-

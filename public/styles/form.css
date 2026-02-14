@@ -154,7 +154,10 @@ border-radius: 10px;
 
   .form {
     padding: 20px 15px;
-    margin: 20px 10px;
+    margin: auto;
+    width: 80%;
+    max-width: 100%;
+    
   }
 
   .form h2 {
@@ -168,10 +171,11 @@ border-radius: 10px;
 
   .form textarea {
     font-size: 14px;
-  }
+    min-height: 80px;
 
   .form button {
     font-size: 15px;
+    height: 40px;
   }
 
   .form .message {
@@ -182,6 +186,7 @@ border-radius: 10px;
     font-size: 18px;
   }
 }
+  }
 .form {
   transition: transform 0.2s ease;
 }
