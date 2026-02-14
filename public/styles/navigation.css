@@ -170,39 +170,33 @@ footer {
 
   header {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
   }
 
-  #logo-img {
-    height: 70px;
-  }
-
- nav {
-    flex-wrap: wrap;
+  nav {
+    display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   nav a {
-    min-width: 140px;
-    height: 50px;
+    min-width: 120px;
+    height: 45px;
     font-size: 14px;
+    padding: 0 10px;
   }
 
-  #home {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
+  #logo-img {
+    height: 65px;
   }
 
-  #home h1 {
-    width: 100%;
-    font-size: 22px;
-  }
-
-  #home img {
-    height: 220px;
-    margin: 10px 0;
+  .welcome {
+    font-size: 16px;
   }
 }
+
 
 
