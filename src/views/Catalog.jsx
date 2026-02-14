@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getShows } from "../data/shows";
 
-import Spinner from "../components/Spinner";
+import Spinner from "./Spinner";
 
 
 export default function Catalog() {
