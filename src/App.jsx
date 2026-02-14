@@ -1,6 +1,7 @@
-import { Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
+import { useContext } from "react";
 
+import { Routes, Route } from "react-router-dom";
+import { AuthContext, AuthProvider } from "./context/AuthContext";
 
 import Home from "./views/Home";
 import Footer from "./views/Footer";
@@ -14,36 +15,33 @@ import Edit from "./views/Edit";
 import Search from "./views/Search";
 import AuthGuard from "./guards/AuthGuard";
 import GuestGuard from "./guards/GuestGuard";
+import Spinner from "./views/Spinner";
 
 function App() {
+  const { loading } = useContext(AuthContext);
+
+  
   return (
     <>
-    <AuthProvider>
-       <Header/>
+      <Header />
+      {loading ? <Spinner /> : 
       <Routes>
         <Route path={"/"} element={<Home />} />
-        <Route path={"/catalog"} element={<Catalog/>}/>
+        <Route path={"/catalog"} element={<Catalog />} />
 
-        <Route element={<GuestGuard/>}>
-
-        <Route path={"/login"} element={<Login />} />
-        <Route path={"/register"} element={<Register />} />
-
+        <Route element={<GuestGuard />}>
+          <Route path={"/login"} element={<Login />} />
+          <Route path={"/register"} element={<Register />} />
         </Route>
-      
 
-        <Route element={<AuthGuard/>}>
-
-        <Route path={"/create"} element={<Create/>}/>
-        <Route path={"/search"} element={<Search/>}/>
-        <Route path={"/catalog/:showId"} element={<Details/>}/>
-        <Route path={"/catalog/:showId/edit"} element={<Edit/>}/>
-
+        <Route element={<AuthGuard />}>
+          <Route path={"/create"} element={<Create />} />
+          <Route path={"/search"} element={<Search />} />
+          <Route path={"/catalog/:showId"} element={<Details />} />
+          <Route path={"/catalog/:showId/edit"} element={<Edit />} />
         </Route>
-        
-      </Routes>
-      <Footer/>
-      </AuthProvider>
+      </Routes>}
+      <Footer />
     </>
   );
 }

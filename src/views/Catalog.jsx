@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { getShows } from "../data/shows";
 
 import Spinner from "./Spinner";
+import { toast } from "react-toastify";
+
 
 
 export default function Catalog() {
@@ -15,7 +17,9 @@ export default function Catalog() {
   useEffect(() => {
     getShows()
       .then(setShows)
-      .catch((err) => setError(err.message))
+      .catch((err) =>{ 
+        setError(err.message);
+        toast.error(err.message);})
       .finally(() => setLoading(false));
   }, []);
 

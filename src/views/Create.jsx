@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { createShow } from "../data/shows";
 import { useState } from "react";
 import useForm from "../hooks/useForm";
+import { toast } from "react-toastify";
+
 
 const initialValues = {
   title: "",
@@ -32,6 +34,7 @@ export default function Create() {
 
   try {
     await createShow(showData);
+    toast.success("Show added successfully 🚀");
     navigate("/catalog");
   } catch (err) {
     setError(err.message);

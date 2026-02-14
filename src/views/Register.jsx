@@ -14,7 +14,7 @@ export default function Register() {
 
   const submitHandler = (values) => {
     if (!values.email || !values.password || !values.rePassword) {
-      setError("All fields required!");
+      setError("All fields are required!");
       return;
     }
 

@@ -1,5 +1,5 @@
 export const required = (value) => {
-   return value ? null : 'All fields are required';
+   return value ? null : 'All fields are required!';
 };
 
 export const emailValidator = (value) => {

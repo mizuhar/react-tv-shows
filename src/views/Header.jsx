@@ -1,52 +1,34 @@
-import { useContext } from "react"
-import  {AuthContext}  from "../context/AuthContext"
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
- 
- export default function Header(){
+export default function Header() {
+  const { isAuthenticated, logoutHandler, email } = useContext(AuthContext);
 
+  return (
+    <header>
+      <Link id="logo" to="/">
+        <img id="logo-img" src="/images/show_logo.png" alt="logo" />
+      </Link>
 
+      <nav>
+        {email && <span className="welcome">{email}</span>}
 
+        <Link to="/catalog" className="nav-link">TV Shows</Link>
+        <Link to="/search">Search</Link>
 
-const { isAuthenticated, logoutHandler, email } = useContext(AuthContext)
-
-
-    return (
-         <header>
- 
-  <a id="logo" href="/">
-    <img id="logo-img" src="./images/show_logo.png" alt="logo" />
-  </a>
-  <nav>
-    <div>
-      
-      <span style={{color:'orange',fontSize:'33px'}}>
-       {email}
-      </span>
-      
-      <a href="/catalog">TV Shows</a>
-      <a href="/search">Search</a>
-    </div>
-    {isAuthenticated && 
-
-     <div className="user">
-      <a href="/create">Add Show</a>
-      <a  onClick={logoutHandler}>Logout</a>
-    </div>
-    }
-   
-   
-   {!isAuthenticated && 
-    <div className="guest">
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-    </div>
-   }
-   
-  
-  </nav>
-</header>
-    )
-
- }
- 
-
+        {isAuthenticated ? (
+          <>
+            <Link to="/create">Add Show</Link>
+            <Link onClick={logoutHandler}>Logout</Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
+        )}
+      </nav>
+    </header>
+  );
+}

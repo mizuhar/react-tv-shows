@@ -1,74 +1,10 @@
-// import { useNavigate } from "react-router-dom";
-// import { createContext } from "react";
-// import { useMemo } from "react";
 
-
-// import { login,register,logout } from "../data/auth";
-
-// import usePersistedState from "../hooks/usePersisted";
-// import { AUTH_KEY } from "../constants/authConstants";
-
-
-
-
-// export const AuthContext = createContext()
-
-// export const AuthProvider = ({ children }) => {
-
-//     const navigate = useNavigate();
-//     const [auth, setAuth] = usePersistedState(AUTH_KEY, null);
-
-//     const loginSubmitHandler = async ({email,password}) => {
-//         try {
-//             const result = await login(email,password);
-//             setAuth(result);
-//             navigate('/');
-//         } catch(err){
-//             console.error(err);
-//         }
-//     };
-
-//     const registerSubmitHandler = async ({email,password}) => {
-//         try {
-//             const result = await register(email,password);
-//             setAuth(result);
-//             navigate('/');
-//         } catch(err){
-//             console.error(err);
-//         }
-//     };
-
-//     const logoutHandler = async () => {
-//         try {
-//             await logout?.();
-//         } catch {}
-
-//         setAuth(null);
-//         navigate('/login');
-//     };
-
-//     const context = useMemo(() => ({
-//         loginSubmitHandler,
-//         registerSubmitHandler,
-//         logoutHandler,
-//         auth,
-//         userId: auth?._id,
-//         username: auth?.username || auth?.email,
-//         email: auth?.email,
-//         isAuthenticated: !!auth,
-//     }), [auth]);
-
-//     return (
-//         <AuthContext.Provider value={context}>
-//             {children}
-//         </AuthContext.Provider>
-//     );
-// };
-
-// export default AuthContext
 import { createContext, useEffect, useState } from "react";
 import { supabase } from "../data/supabaseClient";
 import * as authService from "../data/auth";
+
+import { toast } from "react-toastify";
+
 
 export const AuthContext = createContext();
 
@@ -91,17 +27,67 @@ export const AuthProvider = ({ children }) => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const loginSubmitHandler = async ({ email, password }) => {
-    await authService.login(email, password);
-  };
+ const loginSubmitHandler = async ({ email, password }) => {
+  if (!email || !password) {
+    toast.error("All fields are required!");
+    return;
+  }
 
-  const registerSubmitHandler = async ({ email, password }) => {
-    await authService.register(email, password);
-  };
+  const loginPromise = authService.login(email, password);
 
-  const logoutHandler = async () => {
-    await authService.logout();
-  };
+  toast.promise(loginPromise, {
+    pending: "Logging in...",
+    success: "Welcome back 👋",
+    error: "Invalid email or password 😢",
+  });
+
+  try {
+    await loginPromise;
+  } catch (err) {
+    // optional ако искаш custom message от Supabase
+    console.error(err.message);
+  }
+};
+
+
+const registerSubmitHandler = async ({ email, password }) => {
+  if (!email || !password) {
+    toast.error("All fields are required!");
+    return;
+  }
+
+  const registerPromise = authService.register(email, password);
+
+  toast.promise(registerPromise, {
+    pending: "Creating account...",
+    success: "Account created successfully 🎉",
+    error: "Registration failed 😢",
+  });
+
+  try {
+    await registerPromise;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+
+ const logoutHandler = async () => {
+  const logoutPromise = authService.logout();
+
+  toast.promise(logoutPromise, {
+    pending: "Signing out...",
+    success: "Logged out 👋",
+    error: "Logout failed 😢",
+  });
+
+  try {
+    await logoutPromise;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
 
   const context = {
     user,
