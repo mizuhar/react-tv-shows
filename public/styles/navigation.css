@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Odibee+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
 
 /* -------------------- */
 /* BODY */
@@ -9,7 +9,6 @@ body {
   background-size: cover;
   background-position: center;
   margin: 0;
-  padding: 0;
   font-family: "Odibee Sans", sans-serif;
 }
 
@@ -44,25 +43,19 @@ header {
 nav {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-/* Email / Welcome */
-
-.welcome-bar {
-  display: flex;
-  align-items: center;
-}
+/* EMAIL */
 
 .welcome-bar span {
   color: orange;
-  font-size: 22px;
+  font-size: 35px;
   white-space: nowrap;
 }
 
-/* Links */
+/* LINKS */
 
 nav a {
   min-width: 110px;
@@ -156,6 +149,38 @@ footer {
   margin-right: 50px;
 }
 
+
+/* -------------------- */
+/* DESKTOP ALIGNMENT */
+/* -------------------- */
+
+@media (min-width: 769px) {
+
+  header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: nowrap;   /* 🔥 това спира чупенето на редове */
+  }
+
+  .welcome-bar {
+    display: flex;
+    align-items: center;
+    margin-right: 6px;   /* контрол на разстоянието до иконките */
+  }
+
+  .welcome-bar span {
+    font-size: 22px;     /* 35px е твърде голямо за header */
+    white-space: nowrap;
+  }
+}
+
 /* -------------------- */
 /* MOBILE */
 /* -------------------- */
@@ -166,12 +191,12 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 8px 10px;
     gap: 6px;
-    padding: 6px 10px;
   }
 
   #logo-img {
-    height: 65px;
+    height: 60px;
   }
 
   nav {
@@ -187,11 +212,12 @@ footer {
 
   .welcome-bar {
     width: 100%;
-    justify-content: center;
+    text-align: center;
   }
 
   .welcome-bar span {
     font-size: 16px;
+    white-space: normal;
     word-break: break-all;
   }
 

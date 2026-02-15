@@ -3,6 +3,7 @@ import { editShow,getShow } from "../data/shows";
 import { useState } from "react";
 import useForm from "../hooks/useForm";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const initialValues = {
   title: "",
@@ -43,6 +44,7 @@ export default  function Edit(){
 
   try {
     await editShow(showId, showData);
+    toast.success("Show update successfully 🚀");
     navigate("/catalog");
   } catch (err) {
     setError(err.message);

@@ -10,30 +10,31 @@ export default function Header() {
       <Link id="logo" to="/">
         <img id="logo-img" src="/images/show_logo.png" alt="logo" />
       </Link>
-{email && (
-  <div className="welcome-bar">
-    <span>{email}</span>
+        {email && (
+    <div className="welcome-bar">
+      <span>Welcome,{email}!</span>
+    </div>
+  )}
+<nav>
+  <div className="nav-left">
+    <Link to="/catalog">TV Shows</Link>
+    <Link to="/search">Search</Link>
   </div>
-)}
 
-      <nav>
-        
-
-        <Link to="/catalog" className="nav-link">TV Shows</Link>
-        <Link to="/search">Search</Link>
-
-        {isAuthenticated ? (
-          <>
-            <Link to="/create">Add Show</Link>
-            <Link onClick={logoutHandler}>Logout</Link>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
-        )}
-      </nav>
+  <div className="nav-right">
+    {isAuthenticated ? (
+      <>
+        <Link to="/create">Add Show</Link>
+        <Link onClick={logoutHandler}>Logout</Link>
+      </>
+    ) : (
+      <>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+      </>
+    )}
+  </div>
+</nav>
     </header>
   );
 }
