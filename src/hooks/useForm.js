@@ -25,11 +25,16 @@ export default function useForm(submitHandler, initialValue){
     const onSubmit = async (e)=>{
         e.preventDefault();
 
-        if(submitHandler){
-            await submitHandler(values);
-        }
+        if (!submitHandler) return;
 
-        setValues(initialValue);
+        try {
+            await submitHandler(values);
+            setValues(initialValue);
+            
+        } catch (error) {
+            console.error(error)
+        }
+        
     };
 
     const onReset = ()=>{
