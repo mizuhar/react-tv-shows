@@ -61,15 +61,20 @@ const registerSubmitHandler = async ({ email, password }) => {
   toast.promise(registerPromise, {
     pending: "Creating account...",
     success: "Account created successfully 🎉",
-    error: "Registration failed 😢",
+    error: {
+      render({ data }) {
+        return data?.message || "Registration failed 😢";
+      },
+    },
   });
 
   try {
     await registerPromise;
   } catch (err) {
-    console.error(err.message);
+    throw err; // ✅ ключовото
   }
 };
+
 
 
  const logoutHandler = async () => {

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import {AuthContext} from "../context/AuthContext";
+import { toast } from "react-toastify";
 import useForm from "../hooks/useForm";
 
 const initialValues = {
@@ -12,7 +13,7 @@ export default function Register() {
   const { registerSubmitHandler } = useContext(AuthContext);
   const [error, setError] = useState(null);
 
-  const submitHandler = (values) => {
+  const submitHandler = async (values) => {
     if (!values.email || !values.password || !values.rePassword) {
       setError("All fields are required!");
       return;
@@ -22,8 +23,14 @@ export default function Register() {
       setError("Passwords do not match");
       return;
     }
-    setError(null);
-    registerSubmitHandler(values);
+    try {
+      setError(null);
+      await registerSubmitHandler(values);
+    } catch (error) {
+      setError(error.message)
+      toast.error(err.message);
+    }
+    
   };
 
   const { values, setValues, onChange, onSubmit, onReset } = useForm(
